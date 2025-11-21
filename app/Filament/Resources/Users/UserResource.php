@@ -5,9 +5,11 @@ namespace App\Filament\Resources\Users;
 use App\Filament\Resources\Users\Pages\CreateUser;
 use App\Filament\Resources\Users\Pages\EditUser;
 use App\Filament\Resources\Users\Pages\ListUsers;
+use App\Filament\Resources\Users\RelationManagers\OrdersRelationManager;
 use App\Filament\Resources\Users\Pages\ViewUser;
 use App\Filament\Resources\Users\Schemas\UserForm;
 use App\Filament\Resources\Users\Tables\UsersTable;
+use App\Models\Order;
 use App\Models\User;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -38,7 +40,7 @@ class UserResource extends Resource
                     ->dehydrateStateUsing(fn ($state) => Hash::make($state)),
                 DatePicker::make('email_verified_at')
                     ->label('Date')
-                    ->placeholder('Please fill out')
+                    ->placeholder('Please fill out')    
                     ->required(),
             ]);
     }
@@ -68,7 +70,9 @@ class UserResource extends Resource
 
     public static function getRelations(): array
     {   
-        return [];
+        return [
+            OrdersRelationManager::class
+        ];
     }
 
     public static function getPages(): array
