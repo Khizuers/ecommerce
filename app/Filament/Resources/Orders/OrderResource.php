@@ -6,6 +6,7 @@ use App\Filament\Resources\Orders\Pages\CreateOrder;
 use App\Filament\Resources\Orders\Pages\EditOrder;
 use App\Filament\Resources\Orders\Pages\ListOrders;
 use App\Filament\Resources\Orders\Pages\ViewOrder;
+use App\Filament\Resources\Orders\RelationManagers\AddressRelationManager;
 use App\Models\Order;
 use App\Models\Product;
 use BackedEnum;
@@ -265,7 +266,9 @@ class OrderResource extends Resource
 
     public static function getRelations(): array
     {
-        return [];
+        return [
+            AddressRelationManager::class
+        ];
     }
 
     public static function getPages(): array
