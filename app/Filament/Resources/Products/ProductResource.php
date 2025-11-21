@@ -125,7 +125,7 @@ class ProductResource extends Resource
                     ->sortable(),
 
                 TextColumn::make('price')
-                    ->money('USD')
+                    ->money('USD    ')
                     ->sortable(),
 
                 IconColumn::make('is_featured')
